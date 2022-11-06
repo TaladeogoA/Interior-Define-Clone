@@ -1,0 +1,234 @@
+$dark-blue: #2f313e;
+$white: #fff;
+$font-family: "Barlow Semi Condensed", sans-serif;
+$font-weight-normal: 300;
+$font-weight-bold: 500;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+html {
+  scroll-snap-type: y proximity;
+  height: 100vh;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {
+  font-family: $font-family;
+  font-weight: $font-weight-normal;
+  color: $dark-blue;
+  background-color: $white;
+
+  //  how to add scroll snap here?
+  // html {
+  //   scroll-snap-type: y proximity;
+  //   height: 100vh;
+  //   overflow: scroll;
+  // }
+  // p:first-of-type {
+  //   scroll-snap-align: unset;
+  // }
+  // p {
+  //   background: pink;
+  //   padding: 3rem 4rem;
+  //   scroll-snap-align: start;
+  // }
+}
+
+// Navbar
+
+nav {
+  background-color: $dark-blue;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+
+    .nav-socials a {
+      color: white;
+      margin-left: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      color: white;
+      font-weight: $font-weight-bold;
+      align-self: center;
+    }
+  }
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.hero {
+  .heading {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    h1 {
+      font-size: 3rem;
+      font-weight: $font-weight-bold;
+      color: $white;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+
+  .hero-bg {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      position: absolute;
+      object-fit: cover;
+      height: 100%;
+      background: white;
+      opacity: 1;
+
+      &:nth-child(1) {
+        z-index: 5;
+      }
+
+      &:nth-child(2) {
+        z-index: 4;
+      }
+
+      &:nth-child(3) {
+        z-index: 3;
+      }
+
+      &:nth-child(4) {
+        z-index: 2;
+      }
+
+      &:nth-child(5) {
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.elements {
+  // display: flex;
+  position: relative;
+
+  .element-full-image {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-image: url(/images/element-one.jpg);
+    background-size: cover;
+    background-position: center;
+    display: none;
+  }
+
+  .element-wrapper {
+    display: flex;
+
+    .element {
+      width: 20%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .element-icons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+}
